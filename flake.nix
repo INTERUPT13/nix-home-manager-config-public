@@ -8,7 +8,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { home-manager, ... }:
+  outputs = { nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
       username = "flandre";
@@ -18,7 +18,26 @@
         homeDirectory = "/home/${username}";
         stateVersion = "21.11";
 
-        programs.home-manager.enable = true;
+        configuration = with import nixpkgs{inherit system;};{
+          programs.neovim = {
+            enable = true;
+            viAlias = true;
+            vimAlias = true;
+            vimdiffAlias = true;
+            plugins = with vimPlugins; [
+              gruvbox-community
+              vim-nix
+            ];
+
+            extraConfig = ''
+              colorscheme gruvbox
+            '';
+          };
+
+          programs.git.enable = true;
+          programs.home-manager.enable = true;
+        };
+
       };
     };
 }
