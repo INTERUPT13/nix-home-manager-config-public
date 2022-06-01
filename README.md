@@ -14,7 +14,7 @@ instaled (21.11) via
   echo . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" > ~/.profile
 
 
-  nix build --no-link ~/.config.nixpklgs#homeConfigurations.flandre.activationPackage
+  nix build --no-link ~/.config/nixpkgs#homeConfigurations.flandre.activationPackage
 
   # (note: if I run into weird activation package missing issues again ... make sure that the usename
   # for  nixpkgs#homeConfigurations.<username>.... is correct in the .config/nixpkgs/flake.nix 
