@@ -46,7 +46,7 @@
 
             packages = [
               htop
-
+              tmux
               nixfmt.packages.x86_64-linux.nixfmt
             ];
           };
