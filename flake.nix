@@ -43,6 +43,12 @@
             username = "flandre";
             homeDirectory = "/home/flandre";
             stateVersion = "21.11";
+
+            packages = [
+              htop
+
+              nixfmt.packages.x86_64-linux.nixfmt
+            ];
           };
           programs.zsh = {
             enable = true;
@@ -68,8 +74,6 @@
             ];
           };
 
-          packages = with nixfmt.packages.${system}; [ nixfmt ];
-
           programs.neovim = with pkgs; {
             enable = true;
             viAlias = true;
@@ -82,7 +86,12 @@
             '';
           };
 
-          programs.git.enable = true;
+          programs.git = {
+            enable = true;
+            userName = "flandre";
+            userEmail = "flandre@dontspamme.com";
+          };
+
           programs.home-manager.enable = true;
         }];
       };
