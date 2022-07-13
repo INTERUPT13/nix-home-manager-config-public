@@ -1,4 +1,3 @@
-
 {
   description = "Home Manager configuration";
 
@@ -10,6 +9,11 @@
     zsh-colored-man-pages = {
       url = "https://github.com/ael-code/zsh-colored-man-pages";
       flake = false;
+      type = "git";
+    };
+
+    nixfmt = {
+      url = "https://github.com/serokell/nixfmt";
       type = "git";
     };
 
@@ -26,18 +30,20 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, zsh-colored-man-pages, zsh-autosuggestions, 
-    zsh-clipboard-crossystem, ...}:
+  outputs = { nixpkgs, home-manager, zsh-colored-man-pages, zsh-autosuggestions
+    , zsh-clipboard-crossystem, nixfmt, ... }:
     let
       system = "x86_64-linux";
-      username = "flandre";
+      pkgs = import nixpkgs { inherit system; };
     in {
-      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
-        inherit system username;
-        homeDirectory = "/home/${username}";
-        stateVersion = "21.11";
-
-        configuration = with import nixpkgs{inherit system;};{
+      homeConfigurations.flandre = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = with pkgs; [{
+          home = {
+            username = "flandre";
+            homeDirectory = "/home/flandre";
+            stateVersion = "21.11";
+          };
           programs.zsh = {
             enable = true;
             enableCompletion = true;
@@ -62,15 +68,14 @@
             ];
           };
 
-          programs.neovim = {
+          packages = with nixfmt.packages.${system}; [ nixfmt ];
+
+          programs.neovim = with pkgs; {
             enable = true;
             viAlias = true;
             vimAlias = true;
             vimdiffAlias = true;
-            plugins = with vimPlugins; [
-              gruvbox-community
-              vim-nix
-            ];
+            plugins = with vimPlugins; [ gruvbox-community vim-nix ];
 
             extraConfig = ''
               colorscheme gruvbox
@@ -79,8 +84,7 @@
 
           programs.git.enable = true;
           programs.home-manager.enable = true;
-        };
-
+        }];
       };
     };
 }
