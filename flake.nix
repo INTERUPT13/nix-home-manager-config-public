@@ -38,7 +38,6 @@
     in {
       # to be used with the nixos home-manager module + standalone home-manager
       default_cfg = with pkgs; {
-        inherit pkgs;
         home = {
           stateVersion = "22.05";
 
@@ -98,13 +97,15 @@
 
       # applied when using home manager standalone for user flandre
       #homeConfigurations.flandre =  home-manager.lib.homeManagerConfiguration ( self.default_cfg );
-      homeConfigurations.flandre =  home-manager.lib.homeManagerConfiguration ( {
+      homeConfigurations.flandre = with pkgs; home-manager.lib.homeManagerConfiguration ( {
         inherit pkgs;
+	#pkgs = self.default_cfg.pkgs;
         modules = [
-          {
+	  {
             home.username = "flandre";
             home.homeDirectory = "/home/flandre";
-          } // self.default_cfg;
+	  }
+          self.default_cfg
         ];
       });
     };
