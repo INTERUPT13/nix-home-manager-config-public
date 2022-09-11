@@ -45,10 +45,11 @@
 
           # TODO secrets management for every program that needs secrets
           packages = with pkgs; [
-            htop
           ] ++ (import ./packages/multimedia.nix (pkgs))
           ++ (import ./packages/web.nix (pkgs))
-          ++ (import ./packages/crypto.nix (pkgs));
+          ++ (import ./packages/crypto.nix (pkgs))
+          ++ (import ./packages/linux_tools.nix (pkgs))
+          ++ (import ./packages/binary_debugging.nix (pkgs));
         };
 
         programs.zsh = {
