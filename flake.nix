@@ -37,7 +37,8 @@
       pkgs = import nixpkgs { inherit system; };
     in {
       # to be used with the nixos home-manager module + standalone home-manager
-      default_cfg = {
+      default_cfg = with pkgs; {
+        inherit pkgs;
         home = {
           stateVersion = "22.05";
 
@@ -51,7 +52,7 @@
           ];
         };
 
-          programs.zsh = {
+        programs.zsh = {
             enable = true;
             enableCompletion = true;
             oh-my-zsh = {
@@ -73,7 +74,7 @@
                 src = zsh-clipboard-crossystem;
               }
             ];
-          };
+        };
 
           programs.neovim =  with pkgs; {
             enable = true;
@@ -96,6 +97,15 @@
       };
 
       # applied when using home manager standalone for user flandre
-      homeConfigurations.flandre = home-manager.lib.homeManagerConfiguration (self.default_cfg);
+      #homeConfigurations.flandre =  home-manager.lib.homeManagerConfiguration ( self.default_cfg );
+      homeConfigurations.flandre =  home-manager.lib.homeManagerConfiguration ( {
+        inherit pkgs;
+        modules = [
+          {
+            home.username = "flandre";
+            home.homeDirectory = "/home/flandre";
+          } // self.default_cfg;
+        ];
+      });
     };
 }

@@ -1,0 +1,183 @@
+{
+  "nodes": {
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1641205782,
+        "narHash": "sha256-4jY7RCWUoZ9cKD8co0/4tFARpWB+57+r1bLLvXNJliY=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "b7547d3eed6f32d06102ead8991ec52ab0a4f1a7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1644229661,
+        "narHash": "sha256-1YdnJAsNy69bpcjuoKdOYQX0YxZBiCYZo4Twxerqv7k=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "3cecb5b042f7f209c56ffd8371b2711a290ec797",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": "utils"
+      },
+      "locked": {
+        "lastModified": 1662759269,
+        "narHash": "sha256-lt8bAfEZudCQb+MxoNKmenhMTXhu3RCCyLYxU9t5FFk=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "9f7fe353b613d0e45d7a5cdbd1f13c96c15803dd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "nixfmt": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1649318490,
+        "narHash": "sha256-t+g7N8RAC5XSk8bFrertfIZ2/5ASzOvcUpN5uLZc2DQ=",
+        "ref": "master",
+        "rev": "cb49f929ab727ec858670ee6bfc81c49ff5e56b8",
+        "revCount": 202,
+        "type": "git",
+        "url": "https://github.com/serokell/nixfmt"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/serokell/nixfmt"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1647350163,
+        "narHash": "sha256-OcMI+PFEHTONthXuEQNddt16Ml7qGvanL3x8QOl2Aao=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3eb07eeafb52bcbf02ce800f032f18d666a9498d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1662821606,
+        "narHash": "sha256-Z9z9iSH+tgJ0iyRcBfEQRwELgjnhpVXsktiWiFe3SuY=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "93a0067a9c85c17764f7755947e6ecf52dc47d8a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "home-manager": "home-manager",
+        "nixfmt": "nixfmt",
+        "nixpkgs": "nixpkgs_2",
+        "zsh-autosuggestions": "zsh-autosuggestions",
+        "zsh-clipboard-crossystem": "zsh-clipboard-crossystem",
+        "zsh-colored-man-pages": "zsh-colored-man-pages"
+      }
+    },
+    "utils": {
+      "locked": {
+        "lastModified": 1653893745,
+        "narHash": "sha256-0jntwV3Z8//YwuOjzhV2sgJJPt+HY6KhU7VZUL0fKZQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "1ed9fb1935d260de5fe1c2f7ee0ebaae17ed2fa1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "zsh-autosuggestions": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1622844304,
+        "narHash": "sha256-KLUYpUu4DHRumQZ3w59m9aTW6TBKMCXl2UcKi4uMd7w=",
+        "ref": "master",
+        "rev": "a411ef3e0992d4839f0732ebeb9823024afaaaa8",
+        "revCount": 530,
+        "type": "git",
+        "url": "https://github.com/zsh-users/zsh-autosuggestions"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/zsh-users/zsh-autosuggestions"
+      }
+    },
+    "zsh-clipboard-crossystem": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1656101815,
+        "narHash": "sha256-BaYYzl6JArfPWASJtzk44scGejwgyT5+W94ugVDCV3I=",
+        "ref": "master",
+        "rev": "7fbd15150fe0fc84a34b6aa9e31c5589de3c9ffc",
+        "revCount": 34,
+        "type": "git",
+        "url": "https://github.com/zpm-zsh/clipboard"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/zpm-zsh/clipboard"
+      }
+    },
+    "zsh-colored-man-pages": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1554205411,
+        "narHash": "sha256-087bNmB5gDUKoSriHIjXOVZiUG5+Dy9qv3D69E8GBhs=",
+        "ref": "master",
+        "rev": "57bdda68e52a09075352b18fa3ca21abd31df4cb",
+        "revCount": 9,
+        "type": "git",
+        "url": "https://github.com/ael-code/zsh-colored-man-pages"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/ael-code/zsh-colored-man-pages"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
