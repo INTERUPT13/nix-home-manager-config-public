@@ -30,26 +30,27 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, zsh-colored-man-pages, zsh-autosuggestions
+  outputs = { self, nixpkgs, home-manager, zsh-colored-man-pages, zsh-autosuggestions
     , zsh-clipboard-crossystem, nixfmt, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
     in {
-      homeConfigurations.flandre = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = with pkgs; [{
-          home = {
-            username = "flandre";
-            homeDirectory = "/home/flandre";
-            stateVersion = "21.11";
+      # to be used with the nixos home-manager module + standalone home-manager
+      default_cfg = {
+        home = {
+          stateVersion = "22.05";
 
-            packages = [
-              htop
-              tmux
-              nixfmt.packages.x86_64-linux.nixfmt
-            ];
-          };
+          packages = with pkgs; [
+            htop
+            ffmpeg
+            yt-dlp
+            mpv
+	    links2
+	    monero-gui
+          ];
+        };
+
           programs.zsh = {
             enable = true;
             enableCompletion = true;
@@ -74,26 +75,27 @@
             ];
           };
 
-          programs.neovim = with pkgs; {
+          programs.neovim =  with pkgs; {
             enable = true;
             viAlias = true;
             vimAlias = true;
             vimdiffAlias = true;
-            plugins = with vimPlugins; [ gruvbox-community vim-nix ];
+            plugins = with vimPlugins; [
+              gruvbox-community
+              vim-nix
+            ];
 
             extraConfig = ''
               colorscheme gruvbox
             '';
           };
 
-          programs.git = {
-            enable = true;
-            userName = "flandre";
-            userEmail = "flandre@dontspamme.com";
-          };
+        programs.git.enable = true;
+        programs.home-manager.enable = true;
 
-          programs.home-manager.enable = true;
-        }];
       };
+
+      # applied when using home manager standalone for user flandre
+      homeConfigurations.flandre = home-manager.lib.homeManagerConfiguration (self.default_cfg);
     };
 }
