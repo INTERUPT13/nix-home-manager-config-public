@@ -37,18 +37,18 @@
       pkgs = import nixpkgs { inherit system; };
     in {
       # to be used with the nixos home-manager module + standalone home-manager
+      # TODO make this one desktop the default one shall be more lightweight and
+      # more aimed at useful sysadmin tools + nvim
       default_cfg = with pkgs; {
         home = {
           stateVersion = "22.05";
 
+          # TODO secrets management for every program that needs secrets
           packages = with pkgs; [
             htop
-            ffmpeg
-            yt-dlp
-            mpv
-	    links2
-	    monero-gui
-          ];
+          ] ++ (import ./packages/multimedia.nix (pkgs))
+          ++ (import ./packages/web.nix (pkgs))
+          ++ (import ./packages/crypto.nix (pkgs));
         };
 
         programs.zsh = {
@@ -99,7 +99,6 @@
       #homeConfigurations.flandre =  home-manager.lib.homeManagerConfiguration ( self.default_cfg );
       homeConfigurations.flandre = with pkgs; home-manager.lib.homeManagerConfiguration ( {
         inherit pkgs;
-	#pkgs = self.default_cfg.pkgs;
         modules = [
 	  {
             home.username = "flandre";
