@@ -50,8 +50,14 @@
           ++ (import ./packages/crypto.nix (pkgs))
           ++ (import ./packages/linux_tools.nix (pkgs))
           ++ (import ./packages/binary_debugging.nix (pkgs))
-          ++ (import ./packages/security.nix (pkgs));
+          ++ (import ./packages/security.nix (pkgs))
+          ++ (import ./packages/remote_access.nix (pkgs))
+          ++ (import ./packages/shader_dev.nix (pkgs));
         };
+
+        imports = [
+          ./programs/chromium.nix
+        ];
 
         programs.zsh = {
             enable = true;
