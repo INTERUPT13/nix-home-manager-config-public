@@ -46,6 +46,7 @@
           # TODO secrets management for every program that needs secrets
           packages = with pkgs; [
           ] ++ (import ./packages/multimedia.nix (pkgs))
+          ++ (import ./packages/social.nix (pkgs))
           ++ (import ./packages/web.nix (pkgs))
           ++ (import ./packages/crypto.nix (pkgs))
           ++ (import ./packages/linux_tools.nix (pkgs))
