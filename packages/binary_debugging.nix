@@ -1,4 +1,1 @@
-{pkgs,...}: with pkgs; [
-  radare2
-  gdb
-]
+{ pkgs, ... }: with pkgs; [ radare2 gdb ]

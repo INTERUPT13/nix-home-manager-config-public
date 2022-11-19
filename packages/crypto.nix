@@ -1,4 +1,5 @@
-{pkgs,...}: with pkgs; [
+{ pkgs, ... }:
+with pkgs; [
   #btc one?!
   monero-gui
   monero-cli

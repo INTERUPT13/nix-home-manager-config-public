@@ -1,3 +1,1 @@
-{pkgs,...}: with pkgs; [
-  nixfmt
-]
+{ pkgs, ... }: with pkgs; [ nixfmt ]

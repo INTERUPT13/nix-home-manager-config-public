@@ -1,3 +1,1 @@
-{pkgs,...}: with pkgs; [
-  bonzomatic
-]
+{ pkgs, ... }: with pkgs; [ bonzomatic ]

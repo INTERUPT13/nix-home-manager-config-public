@@ -1,3 +1,5 @@
-{pkgs,...}: with pkgs; [
-  kotatogram-desktop #replaces tdesktop
+{ pkgs, ... }:
+with pkgs;
+[
+  kotatogram-desktop # replaces tdesktop
 ]

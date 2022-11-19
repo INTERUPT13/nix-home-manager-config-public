@@ -1,4 +1,1 @@
-{pkgs,...}: with pkgs; [
-  sshfs
-  mosh
-]
+{ pkgs, ... }: with pkgs; [ sshfs mosh ]
