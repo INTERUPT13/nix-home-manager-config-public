@@ -50,6 +50,7 @@
           ++ (import ./packages/web.nix (pkgs))
           ++ (import ./packages/crypto.nix (pkgs))
           ++ (import ./packages/linux_tools.nix (pkgs))
+          ++ (import ./packages/nix_tools.nix (pkgs))
           ++ (import ./packages/binary_debugging.nix (pkgs))
           ++ (import ./packages/security.nix (pkgs))
           ++ (import ./packages/remote_access.nix (pkgs))
