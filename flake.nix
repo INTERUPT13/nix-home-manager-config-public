@@ -39,6 +39,67 @@
       # to be used with the nixos home-manager module + standalone home-manager
       # TODO make this one desktop the default one shall be more lightweight and
       # more aimed at useful sysadmin tools + nvim
+      pinephone_cfg = with pkgs; {
+        home = {
+          stateVersion = "22.05";
+
+          # TODO secrets management for every program that needs secrets
+          packages = with pkgs;
+            [ ] ++ (import ./packages/multimedia.nix (pkgs))
+            #++ (import ./packages/social.nix (pkgs))
+            #++ (import ./packages/web.nix (pkgs))
+            #++ (import ./packages/crypto.nix (pkgs))
+            ++ (import ./packages/linux_tools.nix (pkgs))
+            ++ (import ./packages/nix_tools.nix (pkgs))
+            #++ (import ./packages/binary_debugging.nix (pkgs))
+            #++ (import ./packages/security.nix (pkgs))
+            ++ (import ./packages/remote_access.nix (pkgs));
+        };
+
+        #imports = [ ./programs/chromium.nix ];
+
+        programs.zsh = {
+          enable = true;
+          enableCompletion = true;
+          oh-my-zsh = {
+            enable = true;
+            theme = "eastwood";
+          };
+          plugins = [
+            {
+              name = "zsh-colored-man-pages";
+              src = zsh-colored-man-pages;
+            }
+            {
+              name = "zsh-autosuggestions";
+              src = zsh-autosuggestions;
+            }
+            #TODO V broken
+            {
+              name = "zsh-clipboard-crossystem";
+              src = zsh-clipboard-crossystem;
+            }
+          ];
+        };
+
+        programs.neovim = with pkgs; {
+          enable = true;
+          viAlias = true;
+          vimAlias = true;
+          vimdiffAlias = true;
+          plugins = with vimPlugins; [ gruvbox-community vim-nix ];
+
+          extraConfig = ''
+            colorscheme gruvbox
+          '';
+        };
+
+        programs.git.enable = true;
+        programs.home-manager.enable = true;
+
+      };
+
+
       default_cfg = with pkgs; {
         home = {
           stateVersion = "22.05";
