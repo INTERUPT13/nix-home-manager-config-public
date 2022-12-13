@@ -1,6 +1,1 @@
-{ pkgs, ... }: with pkgs; [ 
-  ffmpeg
-  yt-dlp
-  mpv
-  v4l-utils
-]
+{ pkgs, ... }: with pkgs; [ ffmpeg yt-dlp mpv v4l-utils ]

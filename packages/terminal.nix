@@ -1,6 +1,5 @@
 { pkgs, ... }:
-with pkgs;
-[
+with pkgs; [
   #alacritty
   rxvt-unicode
   gnome.nautilus

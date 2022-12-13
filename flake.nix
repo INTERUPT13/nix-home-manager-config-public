@@ -36,7 +36,7 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
       # TODO make this passable from the outside via ? operator
-      phonepkgs = import nixpkgs { system="aarch64-linux"; };
+      phonepkgs = import nixpkgs { system = "aarch64-linux"; };
     in {
       # to be used with the nixos home-manager module + standalone home-manager
       # TODO make this one desktop the default one shall be more lightweight and
@@ -50,8 +50,7 @@
             [
               tdesktop # sinke kotatogram or how its called seems to not run on aarch or whatever
 
-            ]
-            ++ (import ./packages/multimedia.nix (phonepkgs))
+            ] ++ (import ./packages/multimedia.nix (phonepkgs))
             ++ (import ./packages/social.nix (pkgs))
             #++ (import ./packages/web.nix (pkgs))
             #++ (import ./packages/crypto.nix (pkgs))
@@ -106,7 +105,6 @@
 
       };
 
-
       default_cfg = with pkgs; {
         home = {
           stateVersion = "22.05";
@@ -131,7 +129,7 @@
           enable = true;
           enableCompletion = true;
           oh-my-zsh = {
-#            enable = true;
+            #            enable = true;
             theme = "eastwood";
           };
           plugins = [
