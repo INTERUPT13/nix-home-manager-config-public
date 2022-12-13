@@ -35,28 +35,36 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
+      # TODO make this passable from the outside via ? operator
+      phonepkgs = import nixpkgs { system="aarch64-linux"; };
     in {
       # to be used with the nixos home-manager module + standalone home-manager
       # TODO make this one desktop the default one shall be more lightweight and
       # more aimed at useful sysadmin tools + nvim
-      pinephone_cfg = with pkgs; {
+      pinephone_cfg = with phonepkgs; {
         home = {
-          stateVersion = "22.05";
+          stateVersion = "22.11";
 
           # TODO secrets management for every program that needs secrets
-          packages = with pkgs;
-            [ ] ++ (import ./packages/multimedia.nix (pkgs))
-            #++ (import ./packages/social.nix (pkgs))
+          packages = with phonepkgs;
+            [
+              tdesktop # sinke kotatogram or how its called seems to not run on aarch or whatever
+
+            ]
+            ++ (import ./packages/multimedia.nix (phonepkgs))
+            ++ (import ./packages/social.nix (pkgs))
             #++ (import ./packages/web.nix (pkgs))
             #++ (import ./packages/crypto.nix (pkgs))
-            ++ (import ./packages/linux_tools.nix (pkgs))
-            ++ (import ./packages/nix_tools.nix (pkgs))
+            ++ (import ./packages/linux_tools.nix (phonepkgs))
+            ++ (import ./packages/nix_tools.nix (phonepkgs))
             #++ (import ./packages/binary_debugging.nix (pkgs))
-            #++ (import ./packages/security.nix (pkgs))
-            ++ (import ./packages/remote_access.nix (pkgs));
+            #TODO make "rr" free version for aarch64 ++ (import ./packages/security.nix (phonepkgs))
+            ++ (import ./packages/terminal.nix (phonepkgs))
+            ++ (import ./packages/remote_access.nix (phonepkgs));
         };
 
         #imports = [ ./programs/chromium.nix ];
+        imports = [ ./programs/git.nix ];
 
         programs.zsh = {
           enable = true;
@@ -75,14 +83,14 @@
               src = zsh-autosuggestions;
             }
             #TODO V broken
-            {
-              name = "zsh-clipboard-crossystem";
-              src = zsh-clipboard-crossystem;
-            }
+            #{
+            #  name = "zsh-clipboard-crossystem";
+            #  src = zsh-clipboard-crossystem;
+            #}
           ];
         };
 
-        programs.neovim = with pkgs; {
+        programs.neovim = with phonepkgs; {
           enable = true;
           viAlias = true;
           vimAlias = true;
@@ -94,7 +102,6 @@
           '';
         };
 
-        programs.git.enable = true;
         programs.home-manager.enable = true;
 
       };
@@ -118,13 +125,13 @@
             ++ (import ./packages/shader_dev.nix (pkgs));
         };
 
-        imports = [ ./programs/chromium.nix ];
+        imports = [ ./programs/chromium.nix ./programs/git.nix ];
 
         programs.zsh = {
           enable = true;
           enableCompletion = true;
           oh-my-zsh = {
-            enable = true;
+#            enable = true;
             theme = "eastwood";
           };
           plugins = [

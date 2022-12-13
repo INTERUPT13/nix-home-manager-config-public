@@ -39,11 +39,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1662759269,
-        "narHash": "sha256-lt8bAfEZudCQb+MxoNKmenhMTXhu3RCCyLYxU9t5FFk=",
+        "lastModified": 1670513770,
+        "narHash": "sha256-muL74fsbGA8K8WlZSPNWddOiuBnC54kAajncX6nXrh4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9f7fe353b613d0e45d7a5cdbd1f13c96c15803dd",
+        "rev": "054d9e3187ca00479e8036dc0e92900a384f30fd",
         "type": "github"
       },
       "original": {
@@ -59,11 +59,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1649318490,
-        "narHash": "sha256-t+g7N8RAC5XSk8bFrertfIZ2/5ASzOvcUpN5uLZc2DQ=",
-        "ref": "master",
-        "rev": "cb49f929ab727ec858670ee6bfc81c49ff5e56b8",
-        "revCount": 202,
+        "lastModified": 1667311710,
+        "narHash": "sha256-vGiA5UwWFfprgdhFVNZjYrE5AhQE6jG7Ryyry0+gITY=",
+        "ref": "refs/heads/master",
+        "rev": "fb698be995b5dcc6aeeeb94465de1923688503ec",
+        "revCount": 222,
         "type": "git",
         "url": "https://github.com/serokell/nixfmt"
       },
@@ -90,11 +90,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1662821606,
-        "narHash": "sha256-Z9z9iSH+tgJ0iyRcBfEQRwELgjnhpVXsktiWiFe3SuY=",
+        "lastModified": 1670751203,
+        "narHash": "sha256-XdoH1v3shKDGlrwjgrNX/EN8s3c+kQV7xY6cLCE8vcI=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "93a0067a9c85c17764f7755947e6ecf52dc47d8a",
+        "rev": "64e0bf055f9d25928c31fb12924e59ff8ce71e60",
         "type": "github"
       },
       "original": {
@@ -116,11 +116,11 @@
     },
     "utils": {
       "locked": {
-        "lastModified": 1653893745,
-        "narHash": "sha256-0jntwV3Z8//YwuOjzhV2sgJJPt+HY6KhU7VZUL0fKZQ=",
+        "lastModified": 1667395993,
+        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "1ed9fb1935d260de5fe1c2f7ee0ebaae17ed2fa1",
+        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
         "type": "github"
       },
       "original": {
@@ -134,7 +134,7 @@
       "locked": {
         "lastModified": 1622844304,
         "narHash": "sha256-KLUYpUu4DHRumQZ3w59m9aTW6TBKMCXl2UcKi4uMd7w=",
-        "ref": "master",
+        "ref": "refs/heads/master",
         "rev": "a411ef3e0992d4839f0732ebeb9823024afaaaa8",
         "revCount": 530,
         "type": "git",
@@ -150,7 +150,7 @@
       "locked": {
         "lastModified": 1656101815,
         "narHash": "sha256-BaYYzl6JArfPWASJtzk44scGejwgyT5+W94ugVDCV3I=",
-        "ref": "master",
+        "ref": "refs/heads/master",
         "rev": "7fbd15150fe0fc84a34b6aa9e31c5589de3c9ffc",
         "revCount": 34,
         "type": "git",
@@ -166,7 +166,7 @@
       "locked": {
         "lastModified": 1554205411,
         "narHash": "sha256-087bNmB5gDUKoSriHIjXOVZiUG5+Dy9qv3D69E8GBhs=",
-        "ref": "master",
+        "ref": "refs/heads/master",
         "rev": "57bdda68e52a09075352b18fa3ca21abd31df4cb",
         "revCount": 9,
         "type": "git",
