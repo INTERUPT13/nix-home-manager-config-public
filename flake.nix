@@ -69,7 +69,7 @@
           enable = true;
           enableCompletion = true;
           oh-my-zsh = {
-            enable = true;
+            #enable = true;
             theme = "eastwood";
           };
           plugins = [
@@ -129,7 +129,7 @@
           enable = true;
           enableCompletion = true;
           oh-my-zsh = {
-            #            enable = true;
+            enable = true;
             theme = "eastwood";
           };
           plugins = [
