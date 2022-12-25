@@ -30,8 +30,9 @@
     };
 
     nix-home-manager-config-secrets = {
-      #url = "git@github.com:INTERUPT13/nix-home-manager-config-secrets";
-      url = "path:/etc/nixos/nix-home-manager-config-secrets";
+      url = "git+ssh://git@github.com/INTERUPT13/nix-home-manager-config-secrets";
+      type = "git";
+      #url = "path:/etc/nixos/nix-home-manager-config-secrets";
       flake = false;
     };
   };
@@ -200,7 +201,7 @@
             }
             self.default_cfg
 
-            (import ./programs/mail.nix)
+            (import ./programs/mail.nix {inherit nix-home-manager-config-secrets;})
           ];
         });
     };

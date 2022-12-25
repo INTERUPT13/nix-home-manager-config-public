@@ -52,6 +52,22 @@
         "type": "github"
       }
     },
+    "nix-home-manager-config-secrets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1671996841,
+        "narHash": "sha256-N5bETLp79t8LJJWIGlna1ckYABDO7BsiUgNcLTAaMXY=",
+        "ref": "master",
+        "rev": "87d9a5fb465f9c0c80b75ceb0f63ab6e5ba75c06",
+        "revCount": 1,
+        "type": "git",
+        "url": "git+ssh://git@github.com/INTERUPT13/nix-home-manager-config-secrets"
+      },
+      "original": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/INTERUPT13/nix-home-manager-config-secrets"
+      }
+    },
     "nixfmt": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -107,6 +123,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "nix-home-manager-config-secrets": "nix-home-manager-config-secrets",
         "nixfmt": "nixfmt",
         "nixpkgs": "nixpkgs_2",
         "zsh-autosuggestions": "zsh-autosuggestions",
