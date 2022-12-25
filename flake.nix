@@ -28,10 +28,16 @@
       flake = false;
       type = "git";
     };
+
+    nix-home-manager-config-secrets = {
+      #url = "git@github.com:INTERUPT13/nix-home-manager-config-secrets";
+      url = "path:/etc/nixos/nix-home-manager-config-secrets";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, zsh-colored-man-pages
-    , zsh-autosuggestions, zsh-clipboard-crossystem, nixfmt, ... }:
+    , zsh-autosuggestions, zsh-clipboard-crossystem, nixfmt, nix-home-manager-config-secrets, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -59,6 +65,7 @@
             #++ (import ./packages/binary_debugging.nix (pkgs))
             #TODO make "rr" free version for aarch64 ++ (import ./packages/security.nix (phonepkgs))
             ++ (import ./packages/terminal.nix (phonepkgs))
+            ++ (import ./packages/doc_creation.nix (phonepkgs))
             ++ (import ./packages/remote_access.nix (phonepkgs));
         };
 
@@ -68,6 +75,12 @@
         programs.zsh = {
           enable = true;
           enableCompletion = true;
+          enableSyntaxHighlighting = true;
+
+          # for himalaya mail n maybe otherthings like git?
+          sessionVariables = {
+            EDITOR = "nvim";
+          };
           oh-my-zsh = {
             #enable = true;
             theme = "eastwood";
@@ -128,6 +141,13 @@
         programs.zsh = {
           enable = true;
           enableCompletion = true;
+          enableSyntaxHighlighting = true;
+          envExtra = "EDITOR=nvim";
+
+          # why doesn't this work but above?
+          #sessionVariables = {
+          #  EDITOR = "nvim";
+          #};
           oh-my-zsh = {
             enable = true;
             theme = "eastwood";
@@ -148,6 +168,8 @@
             }
           ];
         };
+
+
 
         programs.neovim = with pkgs; {
           enable = true;
@@ -177,6 +199,8 @@
               home.homeDirectory = "/home/flandre";
             }
             self.default_cfg
+
+            (import ./programs/mail.nix)
           ];
         });
     };
