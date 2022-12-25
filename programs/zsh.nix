@@ -1,4 +1,5 @@
-{pkgs,zsh-colored-man-pages, zsh-autosuggestions, zsh-clipboard-crossystem,...}: {
+{zsh-colored-man-pages, zsh-autosuggestions, zsh-clipboard-crossystem,...}:
+{pkgs,...}: {
         programs.zsh = {
           enable = true;
           enableCompletion = true;

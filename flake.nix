@@ -70,28 +70,18 @@
             ++ (import ./packages/remote_access.nix (phonepkgs));
         };
 
-        #imports = [ ./programs/chromium.nix ];
-        imports = [ ./programs/git.nix ];
-
-
-        programs.neovim = with phonepkgs; {
-          enable = true;
-          viAlias = true;
-          vimAlias = true;
-          vimdiffAlias = true;
-          plugins = with vimPlugins; [ gruvbox-community vim-nix ];
-
-          extraConfig = ''
-            colorscheme gruvbox
-          '';
-        };
-
 
 
         programs.home-manager.enable = true;  
 
-      } // (import ./programs/zsh.nix attrs)
-      // (import ./programs/mail.nix {inherit nix-home-manager-config-secrets;});
+        imports = [ 
+          #./programs/chromium.nix  #until we have a custom config that works on mobile or use firefox
+          ./programs/git.nix 
+          (import ./programs/zsh.nix (attrs))
+          (import ./programs/mail.nix {inherit nix-home-manager-config-secrets;})
+        ];
+      };
+
 
       server_cfg = with pkgs; {
         home = {
@@ -107,13 +97,16 @@
             ++ (import ./packages/remote_access.nix (pkgs));
         };
 
-        imports = [ ./programs/chromium.nix ./programs/git.nix ];
-
-
         programs.home-manager.enable = true;
+        
+        imports = [ 
+          ./programs/chromium.nix 
+          ./programs/git.nix 
+          (import ./programs/zsh.nix (attrs))
+          (import ./programs/mail.nix {inherit nix-home-manager-config-secrets;})
+        ];
+      };
 
-      } // (import ./programs/zsh.nix attrs)
-      // (import ./programs/mail.nix {inherit nix-home-manager-config-secrets;});
 
       default_cfg = with pkgs; {
         home = {
@@ -133,13 +126,16 @@
             ++ (import ./packages/shader_dev.nix (pkgs));
         };
 
-        imports = [ ./programs/chromium.nix ./programs/git.nix ];
-
-
         programs.home-manager.enable = true;
 
-      } // (import ./programs/zsh.nix (attrs // {inherit pkgs;}))
-      // (import ./programs/mail.nix {inherit nix-home-manager-config-secrets;});
+        imports = [ 
+          ./programs/chromium.nix 
+          ./programs/git.nix 
+          (import ./programs/zsh.nix (attrs))
+          (import ./programs/mail.nix {inherit nix-home-manager-config-secrets;})
+        ];
+
+      } ;
 
       # applied when using home manager standalone for user flandre
       #homeConfigurations.flandre =  home-manager.lib.homeManagerConfiguration ( self.default_cfg );
