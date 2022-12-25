@@ -38,7 +38,16 @@
           viAlias = true;
           vimAlias = true;
           vimdiffAlias = true;
-          plugins = with vimPlugins; [ gruvbox-community vim-nix ];
+          plugins = with vimPlugins; [ 
+            gruvbox-community
+            vim-nix
+            himalaya-vim
+          ];
+
+          extraPackages = [
+            himalaya
+          ];
+
 
           extraConfig = ''
             colorscheme gruvbox
