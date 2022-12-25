@@ -73,35 +73,6 @@
         #imports = [ ./programs/chromium.nix ];
         imports = [ ./programs/git.nix ];
 
-        programs.zsh = {
-          enable = true;
-          enableCompletion = true;
-          enableSyntaxHighlighting = true;
-
-          # for himalaya mail n maybe otherthings like git?
-          sessionVariables = {
-            EDITOR = "nvim";
-          };
-          oh-my-zsh = {
-            #enable = true;
-            theme = "eastwood";
-          };
-          plugins = [
-            {
-              name = "zsh-colored-man-pages";
-              src = zsh-colored-man-pages;
-            }
-            {
-              name = "zsh-autosuggestions";
-              src = zsh-autosuggestions;
-            }
-            #TODO V broken
-            #{
-            #  name = "zsh-clipboard-crossystem";
-            #  src = zsh-clipboard-crossystem;
-            #}
-          ];
-        };
 
         programs.neovim = with phonepkgs; {
           enable = true;
@@ -115,9 +86,34 @@
           '';
         };
 
+
+
+        programs.home-manager.enable = true;  
+
+      } // (import ./programs/zsh.nix (pkgs))
+      // (import ./programs/mail.nix {inherit nix-home-manager-config-secrets;});
+
+      server_cfg = with pkgs; {
+        home = {
+          stateVersion = "22.05";
+
+          # TODO secrets management for every program that needs secrets
+          packages = with pkgs;
+            [ ] 
+            ++ (import ./packages/linux_tools.nix (pkgs))
+            ++ (import ./packages/nix_tools.nix (pkgs))
+            ++ (import ./packages/binary_debugging.nix (pkgs))
+            ++ (import ./packages/security.nix (pkgs))
+            ++ (import ./packages/remote_access.nix (pkgs));
+        };
+
+        imports = [ ./programs/chromium.nix ./programs/git.nix ];
+
+
         programs.home-manager.enable = true;
 
-      };
+      } // (import ./programs/zsh.nix (pkgs))
+      // (import ./programs/mail.nix {inherit nix-home-manager-config-secrets;});
 
       default_cfg = with pkgs; {
         home = {
@@ -139,55 +135,11 @@
 
         imports = [ ./programs/chromium.nix ./programs/git.nix ];
 
-        programs.zsh = {
-          enable = true;
-          enableCompletion = true;
-          enableSyntaxHighlighting = true;
-          envExtra = "EDITOR=nvim";
 
-          # why doesn't this work but above?
-          #sessionVariables = {
-          #  EDITOR = "nvim";
-          #};
-          oh-my-zsh = {
-            enable = true;
-            theme = "eastwood";
-          };
-          plugins = [
-            {
-              name = "zsh-colored-man-pages";
-              src = zsh-colored-man-pages;
-            }
-            {
-              name = "zsh-autosuggestions";
-              src = zsh-autosuggestions;
-            }
-            #TODO V broken
-            {
-              name = "zsh-clipboard-crossystem";
-              src = zsh-clipboard-crossystem;
-            }
-          ];
-        };
-
-
-
-        programs.neovim = with pkgs; {
-          enable = true;
-          viAlias = true;
-          vimAlias = true;
-          vimdiffAlias = true;
-          plugins = with vimPlugins; [ gruvbox-community vim-nix ];
-
-          extraConfig = ''
-            colorscheme gruvbox
-          '';
-        };
-
-        programs.git.enable = true;
         programs.home-manager.enable = true;
 
-      };
+      } // (import ./programs/zsh.nix (pkgs))
+      // (import ./programs/mail.nix {inherit nix-home-manager-config-secrets;});
 
       # applied when using home manager standalone for user flandre
       #homeConfigurations.flandre =  home-manager.lib.homeManagerConfiguration ( self.default_cfg );
@@ -201,7 +153,6 @@
             }
             self.default_cfg
 
-            (import ./programs/mail.nix {inherit nix-home-manager-config-secrets;})
           ];
         });
     };

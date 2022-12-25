@@ -1,5 +1,4 @@
-{nix-home-manager-config-secrets,...}: 
-{...}: {
+{nix-home-manager-config-secrets,...}: {
         programs.himalaya = {
           enable = true;
         };
