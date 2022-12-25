@@ -138,7 +138,7 @@
 
         programs.home-manager.enable = true;
 
-      } // (import ./programs/zsh.nix attrs)
+      } // (import ./programs/zsh.nix (attrs // {inherit pkgs;}))
       // (import ./programs/mail.nix {inherit nix-home-manager-config-secrets;});
 
       # applied when using home manager standalone for user flandre
