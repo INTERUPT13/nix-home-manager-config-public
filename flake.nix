@@ -38,7 +38,7 @@
   };
 
   outputs = { self, nixpkgs, home-manager, zsh-colored-man-pages
-    , zsh-autosuggestions, zsh-clipboard-crossystem, nixfmt, nix-home-manager-config-secrets, ... }:
+    , zsh-autosuggestions, zsh-clipboard-crossystem, nixfmt, nix-home-manager-config-secrets, ... }@attrs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -90,7 +90,7 @@
 
         programs.home-manager.enable = true;  
 
-      } // (import ./programs/zsh.nix (pkgs))
+      } // (import ./programs/zsh.nix attrs)
       // (import ./programs/mail.nix {inherit nix-home-manager-config-secrets;});
 
       server_cfg = with pkgs; {
@@ -112,7 +112,7 @@
 
         programs.home-manager.enable = true;
 
-      } // (import ./programs/zsh.nix (pkgs))
+      } // (import ./programs/zsh.nix attrs)
       // (import ./programs/mail.nix {inherit nix-home-manager-config-secrets;});
 
       default_cfg = with pkgs; {
@@ -138,7 +138,7 @@
 
         programs.home-manager.enable = true;
 
-      } // (import ./programs/zsh.nix (pkgs))
+      } // (import ./programs/zsh.nix attrs)
       // (import ./programs/mail.nix {inherit nix-home-manager-config-secrets;});
 
       # applied when using home manager standalone for user flandre
