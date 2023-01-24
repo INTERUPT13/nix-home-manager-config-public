@@ -30,15 +30,18 @@
     };
 
     nix-home-manager-config-secrets = {
-      url = "git+ssh://git@github.com/INTERUPT13/nix-home-manager-config-secrets";
-      type = "git";
-      #url = "path:/etc/nixos/nix-home-manager-config-secrets";
+      #url = "git+ssh://git@github.com/INTERUPT13/nix-home-manager-config-secrets";
+      #type = "git";
+      url = "path:/home/flandre/.config/nixpkgs/nix-home-manager-config-secrets";
       flake = false;
     };
+
+    flake-utils.url = "github:numtide/flake-utils";
+    fenix.url = "github:nix-community/fenix";
   };
 
   outputs = { self, nixpkgs, home-manager, zsh-colored-man-pages
-    , zsh-autosuggestions, zsh-clipboard-crossystem, nixfmt, nix-home-manager-config-secrets, ... }@attrs:
+    , zsh-autosuggestions, zsh-clipboard-crossystem, nixfmt, nix-home-manager-config-secrets, flake-utils, ... }@attrs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -131,6 +134,7 @@
         imports = [ 
           ./programs/chromium.nix 
           ./programs/git.nix 
+          (import ./programs/rust.nix (attrs))
           (import ./programs/zsh.nix (attrs))
           (import ./programs/mail.nix {inherit nix-home-manager-config-secrets;})
         ];

@@ -1,5 +1,24 @@
 {
   "nodes": {
+    "fenix": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "rust-analyzer-src": "rust-analyzer-src"
+      },
+      "locked": {
+        "lastModified": 1673158907,
+        "narHash": "sha256-SeThdOORplSy0eDnU2s6SQeQgS7LLu2q0s0+t8wyETs=",
+        "owner": "nix-community",
+        "repo": "fenix",
+        "rev": "73facffb51e94484809be674748ee7bf8f37d7f6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "fenix",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -17,6 +36,21 @@
       }
     },
     "flake-utils": {
+      "locked": {
+        "lastModified": 1667395993,
+        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_2": {
       "locked": {
         "lastModified": 1644229661,
         "narHash": "sha256-1YdnJAsNy69bpcjuoKdOYQX0YxZBiCYZo4Twxerqv7k=",
@@ -55,24 +89,20 @@
     "nix-home-manager-config-secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1671996841,
-        "narHash": "sha256-N5bETLp79t8LJJWIGlna1ckYABDO7BsiUgNcLTAaMXY=",
-        "ref": "refs/heads/master",
-        "rev": "87d9a5fb465f9c0c80b75ceb0f63ab6e5ba75c06",
-        "revCount": 1,
-        "type": "git",
-        "url": "git+ssh://git@github.com/INTERUPT13/nix-home-manager-config-secrets"
+        "narHash": "sha256-iMm5huEX39uOnnkfA/2IT87hXi3ep2GIFZMjgZKDFyE=",
+        "path": "/home/flandre/.config/nixpkgs/nix-home-manager-config-secrets",
+        "type": "path"
       },
       "original": {
-        "type": "git",
-        "url": "git+ssh://git@github.com/INTERUPT13/nix-home-manager-config-secrets"
+        "path": "/home/flandre/.config/nixpkgs/nix-home-manager-config-secrets",
+        "type": "path"
       }
     },
     "nixfmt": {
       "inputs": {
         "flake-compat": "flake-compat",
-        "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs"
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "lastModified": 1667311710,
@@ -90,6 +120,22 @@
     },
     "nixpkgs": {
       "locked": {
+        "lastModified": 1672953546,
+        "narHash": "sha256-oz757DnJ1ITvwyTovuwG3l9cX6j9j6/DH9eH+cXFJmc=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "a518c77148585023ff56022f09c4b2c418a51ef5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
         "lastModified": 1647350163,
         "narHash": "sha256-OcMI+PFEHTONthXuEQNddt16Ml7qGvanL3x8QOl2Aao=",
         "owner": "NixOS",
@@ -104,7 +150,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1671722432,
         "narHash": "sha256-ojcZUekIQeOZkHHzR81st7qxX99dB1Eaaq6PU5MNeKc=",
@@ -122,13 +168,32 @@
     },
     "root": {
       "inputs": {
+        "fenix": "fenix",
+        "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "nix-home-manager-config-secrets": "nix-home-manager-config-secrets",
         "nixfmt": "nixfmt",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "zsh-autosuggestions": "zsh-autosuggestions",
         "zsh-clipboard-crossystem": "zsh-clipboard-crossystem",
         "zsh-colored-man-pages": "zsh-colored-man-pages"
+      }
+    },
+    "rust-analyzer-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673119177,
+        "narHash": "sha256-Eabe5SOI5XHRrjcFIgGXE0P5CxHlha07IaBBagM0Ap8=",
+        "owner": "rust-lang",
+        "repo": "rust-analyzer",
+        "rev": "1bd1a095936f2c16493743a05f6f14285c98ec8a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rust-lang",
+        "ref": "nightly",
+        "repo": "rust-analyzer",
+        "type": "github"
       }
     },
     "utils": {
