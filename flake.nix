@@ -111,7 +111,7 @@
       };
 
 
-      default_cfg = with pkgs; {
+      default_cfg = pkgs: {
         home = {
           stateVersion = "22.05";
 
@@ -151,7 +151,7 @@
               home.username = "flandre";
               home.homeDirectory = "/home/flandre";
             }
-            self.default_cfg
+            (self.default_cfg pkgs)
 
           ];
         });
