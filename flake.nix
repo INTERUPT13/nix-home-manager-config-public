@@ -3,7 +3,7 @@
 
   inputs = {
     home-manager.url = "github:nix-community/home-manager";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     zsh-colored-man-pages = {
@@ -30,9 +30,9 @@
     };
 
     nix-home-manager-config-secrets = {
-      #url = "git+ssh://git@github.com/INTERUPT13/nix-home-manager-config-secrets";
-      #type = "git";
-      url = "path:/home/flandre/.config/nixpkgs/nix-home-manager-config-secrets";
+      url = "git+ssh://git@github.com/INTERUPT13/nix-home-manager-config-secrets";
+      type = "git";
+      #url = "path:/home/flandre/.config/nixpkgs/nix-home-manager-config-secrets";
       flake = false;
     };
 
@@ -61,7 +61,7 @@
               tdesktop # sinke kotatogram or how its called seems to not run on aarch or whatever
 
             ] ++ (import ./packages/multimedia.nix (phonepkgs))
-            ++ (import ./packages/social.nix (pkgs))
+            # ++ (import ./packages/social.nix (pkgs)) # as for now kotatogram is x86 only make a config that does a match case on pkgs.system
             #++ (import ./packages/web.nix (pkgs))
             #++ (import ./packages/crypto.nix (pkgs))
             ++ (import ./packages/linux_tools.nix (phonepkgs))
@@ -86,7 +86,7 @@
       };
 
 
-      server_cfg = with pkgs; {
+      server_cfg = pkgs: {
         home = {
           stateVersion = "22.05";
 
@@ -103,7 +103,7 @@
         programs.home-manager.enable = true;
         
         imports = [ 
-          ./programs/chromium.nix 
+          (import ./programs/rust.nix (attrs))
           ./programs/git.nix 
           (import ./programs/zsh.nix (attrs))
           (import ./programs/mail.nix {inherit nix-home-manager-config-secrets;})
