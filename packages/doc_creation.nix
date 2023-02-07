@@ -1,4 +1,1 @@
-{ pkgs, ... }:
-with pkgs; [
-  asciinema
-]
+{ pkgs, ... }: with pkgs; [ asciinema ]
